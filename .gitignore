@@ -55,3 +55,4 @@ logs
 
 # Local test scripts
 test-run.sh
+.vercel
