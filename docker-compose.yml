@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  weather-app:
+    build: .
+    container_name: weather-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    # volumes:
+    #   - ./logs:/usr/src/app/logs
+    #   - ./public:/usr/src/app/public:ro
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    # networks:
+    #   - weather-net
+
+# networks:
+#   weather-net:
+#     driver: bridge

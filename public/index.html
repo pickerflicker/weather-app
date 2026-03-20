@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-cloud-sun"></i> Weather App</h1>
+      <p class="tagline">Get current weather conditions by US zip code</p>
+    </header>
+
+    <main>
+      <div class="card input-card">
+        <h2><i class="fas fa-search-location"></i> Check Weather</h2>
+        <div class="form-group">
+          <label for="zip">Enter 5‑digit US ZIP code:</label>
+          <div class="input-with-button">
+            <input type="text" id="zip" placeholder="e.g., 90210" maxlength="5" autocomplete="off">
+            <button id="fetchBtn" class="btn-primary">
+              <i class="fas fa-cloud-sun-rain"></i> Get Weather
+            </button>
+          </div>
+          <small class="hint">Example ZIPs: 10001 (NY), 90210 (Beverly Hills), 94102 (SF)</small>
+        </div>
+        <div class="loading" id="loading" style="display: none;">
+          <div class="spinner"></div>
+          <p>Fetching weather data...</p>
+        </div>
+      </div>
+
+      <div class="card result-card" id="resultCard" style="display: none;">
+        <h2><i class="fas fa-map-marker-alt"></i> Current Weather</h2>
+        <div class="weather-header">
+          <div class="location" id="location">—</div>
+          <div class="observation-time" id="observationTime">—</div>
+        </div>
+        <div class="weather-main">
+          <div class="temp-big" id="temperature">—°F</div>
+          <div class="condition" id="condition">—</div>
+        </div>
+        <div class="weather-details">
+          <div class="detail">
+            <i class="fas fa-temperature-low"></i>
+            <span>Feels Like</span>
+            <strong id="feelsLike">—°F</strong>
+          </div>
+          <div class="detail">
+            <i class="fas fa-tint"></i>
+            <span>Humidity</span>
+            <strong id="humidity">—%</strong>
+          </div>
+          <div class="detail">
+            <i class="fas fa-wind"></i>
+            <span>Wind</span>
+            <strong id="windSpeed">— mph</strong>
+          </div>
+          <div class="detail">
+            <i class="fas fa-compass"></i>
+            <span>Direction</span>
+            <strong id="windDirection">—</strong>
+          </div>
+        </div>
+        <div class="zip-display">
+          <i class="fas fa-hashtag"></i> ZIP: <span id="zipDisplay">—</span>
+        </div>
+      </div>
+
+      <div class="card error-card" id="errorCard" style="display: none;">
+        <h2><i class="fas fa-exclamation-triangle"></i> Error</h2>
+        <p id="errorMessage">An unknown error occurred.</p>
+        <button class="btn-secondary" id="retryBtn">Try Again</button>
+      </div>
+
+      <div class="card info-card">
+        <h2><i class="fas fa-info-circle"></i> About This App</h2>
+        <p>This is a simple weather application that fetches real‑time weather data from <a href="https://wttr.in" target="_blank">wttr.in</a>, a free weather service.</p>
+        <ul>
+          <li><strong>Frontend:</strong> HTML, CSS, JavaScript (vanilla)</li>
+          <li><strong>Backend:</strong> Node.js + Express</li>
+          <li><strong>Weather API:</strong> wttr.in (no API key required)</li>
+          <li><strong>Deployment ready:</strong> Includes Dockerfile and deployment guides</li>
+        </ul>
+        <div class="links">
+          <a href="https://github.com/" target="_blank" class="link-btn">
+            <i class="fab fa-github"></i> GitHub Repo
+          </a>
+          <a href="/api/health" target="_blank" class="link-btn">
+            <i class="fas fa-heartbeat"></i> API Health
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>Weather App &copy; 2025 – Built with <i class="fas fa-heart"></i> by OpenClaw</p>
+      <p class="footer-note">Note: This is a demo project. Weather data may be delayed or approximate.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
